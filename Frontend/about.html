@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    
+    <section class="sub-header">
+        <nav>
+
+            
+            <a href="index.html"><img src="logo.jpg" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                 <i class="fa fa-times" onclick="hideMenu()"></i>
+                  <ul>
+                     <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">COURSE</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                     <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+            <h1>About Us</h1>
+
+      
+    </section>
+
+    <section class="about-us">
+
+        <div class="row">
+            <div class="about-col">
+                <h1>We are the world's largest university</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, dolorum alias velit molestias iste corrupti mollitia, quae, maxime architecto in consequatur nulla natus. Repellat impedit quod odio minima maiores neque necessitatibus quos vitae, modi, magnam autem blanditiis molestias. Distinctio itaque praesentium, deserunt nobis voluptates expedita voluptate obcaecati explicabo minima </rerum></p>
+                <a href="about.html" class="hero-btn red-btn" >EXPLORE NOW</a>
+ 
+            </div>
+
+            <div class="about-col">
+                <img src="img1.jpg" alt="">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis maiores in quis doloribus libero ipsum animi at eveniet magni. Laudantium veritatis id ex, esse nisi corporis suscipit voluptatum officiis cumque impedit sapiente a praesentium magni eius! Ad ipsam voluptate architecto error ullam sit dolor iste doloribus inventore. Ullam, distinctio corporis?</p>
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+            
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+       
+    </section>
+
+    
+<!-- <script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+
+    // ✅ Close menu automatically when a link is clicked
+    const navItems = document.querySelectorAll(".nav-links ul li a");
+    navItems.forEach(link => {
+        link.addEventListener("click", () => {
+            hideMenu();
+        });
+    });
+</script> -->
+
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }
+
+    // ✅ Close menu automatically when a link is clicked
+    const navItems = document.querySelectorAll(".nav-links ul li a");
+    navItems.forEach(link => {
+      link.addEventListener("click", hideMenu);
+    });
+
+    // ✅ Close menu when clicking anywhere outside it
+    document.addEventListener("click", function(event) {
+      const isClickInsideMenu = navLinks.contains(event.target);
+      const isMenuButton = event.target.classList.contains("fa-bars");
+      if (!isClickInsideMenu && !isMenuButton) {
+        hideMenu();
+      }
+    });
+  </script>
+</body>
+</html>

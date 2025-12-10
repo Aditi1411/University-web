@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>Contact Us</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="logo.jpg" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">COURSE</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+        <h1>Contact Us</h1>
+    </section>
+
+    <!-- GOOGLE MAP -->
+    <section class="location">
+        <h2>Find Us at Bhilai</h2>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.434290075069!2d81.3571!3d21.2090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2922bbf52e2321%3A0x93752dacf78c28bd!2sBhilai%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1700000000000"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="contact-us">
+        <div class="row">
+            <div class="contact-col">
+
+                <!-- FIXED FORM -->
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Message" required></textarea>
+
+                    <button type="submit" class="hero-btn red-btn">Submit</button>
+                </form>
+
+                <p id="responseMsg" style="color: green; margin-top: 10px;"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>This is the official University Website contact page.</p>
+        <p>Made with ❤️ by Aditi</p>
+    </section>
+
+    <!-- FORM SCRIPT -->
+    <script>
+    async function submitForm(event) {
+        event.preventDefault();  // stop page from refreshing
+
+        const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        };
+
+        try {
+            const res = await fetch("https://university-backend-q3pu.onrender.com/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await res.json();
+
+            document.getElementById("responseMsg").innerText = data.message;
+
+            // Optional: Clear form after submit
+            document.getElementById("contactForm").reset();
+
+        } catch (error) {
+            document.getElementById("responseMsg").innerText = "Failed to send message.";
+        }
+    }
+    </script>
+
+</body>
+</html>
+
+
+
+
